@@ -3,5 +3,3 @@ function RegistrationController($scope) {
     $scope.email = 'john.doe@gmail.com';
     $scope.password = 'password here';
 }
-
-
