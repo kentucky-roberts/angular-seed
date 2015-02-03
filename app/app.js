@@ -1,12 +1,11 @@
-var myApp = angular.module('myApp', ['ngRoute', 'appControllers']);
+var myApp = angular.module('myApp', ['ngRoute', 'firebase', 'appControllers']);
 
-var appControllers = angular.module('appControllers', []);
+var appControllers = angular.module('appControllers', ['firebase']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/', {
-            templateUrl: 'templates/home.html',
-            controller:  'RegistrationController'
+            templateUrl: 'templates/home.html'
         }).
         when('/login', {
             templateUrl: 'templates/login.html',
@@ -16,17 +15,18 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/register.html',
             controller:  'RegistrationController'
         }).
+        when('/meetings', {
+            templateUrl: 'templates/meetings.html',
+            controller:  'MeetingsController'
+        }).
         when('/about', {
-            templateUrl: 'templates/about.html',
-            controller:  'RegistrationController'
+            templateUrl: 'templates/about.html'
         }).
         when('/contact', {
-            templateUrl: 'templates/contact.html',
-            controller:  'RegistrationController'
+            templateUrl: 'templates/contact.html'
         }).
         when('/sandbox', {
-            templateUrl: 'templates/sandbox.html',
-            controller:  'RegistrationController'
+            templateUrl: 'templates/sandbox.html'
         }).
         otherwise({
             redirectTo: '/login'
