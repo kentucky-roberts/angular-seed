@@ -1,39 +1,34 @@
-var app = angular.module("app", ["ngRoute"]);
+var myApp = angular.module('myApp', ['ngRoute', 'appControllers']);
 
-app.config(function($routeProvider) {
-    $routeProvider
-      
-      .when('/',
-      {
-        templateUrl: "templates/home.html",
-        controller: "AppCtrl"
-      })
-      
-      .when('/about',
-      {
-        templateUrl: "templates/about.html",
-        controller: "AppCtrl"
-      })
-      
-      .when('/contact',
-      {
-        templateUrl: "templates/contact.html",
-        controller: "AppCtrl"
-      })
-      
-      .when('/sandbox', 
-      {
-        templateUrl: "templates/sandbox.html"
-      })
+var appControllers = angular.module('appControllers', []);
 
-      .otherwise({
-        template: "This doesn't exist!"
-      })
-});
-
-app.controller("AppCtrl", function($scope) {
-
-    $scope.model = {
-        message: "This is my app!!!"
-    }
-});
+myApp.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+        when('/', {
+            templateUrl: 'templates/home.html',
+            controller:  'RegistrationController'
+        }).
+        when('/login', {
+            templateUrl: 'templates/login.html',
+            controller:  'RegistrationController'
+        }).
+        when('/register', {
+            templateUrl: 'templates/register.html',
+            controller:  'RegistrationController'
+        }).
+        when('/about', {
+            templateUrl: 'templates/about.html',
+            controller:  'RegistrationController'
+        }).
+        when('/contact', {
+            templateUrl: 'templates/contact.html',
+            controller:  'RegistrationController'
+        }).
+        when('/sandbox', {
+            templateUrl: 'templates/sandbox.html',
+            controller:  'RegistrationController'
+        }).
+        otherwise({
+            redirectTo: '/login'
+        });
+}]);
